@@ -1,23 +1,14 @@
 import streamlit as st
 import pandas as pd
-st.write("Hello World!")
-
-name = st.text_input("What is your name?")
-
-st.write(f"Hello{name}")
-
-if st.button("Click me"):
-    st.write("You click me!")
-
 df = pd.read_csv('sustainable_waste_management_dataset_2024.csv')
 
 st.dataframe(df)
-
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error,r2_score
 import numpy as np
 import matplotlib.pyplot as plt
+from numpy.random import default_rng as rng
 
 CSV_FILE = "sustainable_waste_management_dataset_2024.csv"
 df = pd.read_csv(CSV_FILE)
@@ -44,13 +35,12 @@ print("MSE:", mean_squared_error(y_test, y_pred))
 print("R-squared:", r2_score(y_test, y_pred))
 
 
-plt.figure(figsize=(10, 6))
-plt.scatter(y_test, y_pred, alpha=0.7)
-plt.plot([y.min(), y.max()], [y.min(), y.max()], '--',color = 'red' , lw=2,label='Perfect Prediction Line')
-plt.xlabel("Actual Waste (kg)")
-plt.ylabel("Predicted Waste (kg)")
-plt.title("Actual vs. Predicted Waste")
-plt.legend()
-plt.grid(True)
-plt.show()
-
+fig, ax = plt.subplots()
+ax.scatter(y_test, y_pred, alpha=0.7)
+ax.plot([y.min(), y.max()], [y.min(), y.max()], '--',color = 'red' , lw=2,label='Perfect Prediction Line')
+ax.set_xlabel("Actual Waste (kg)")
+ax.set_ylabel("Predicted Waste (kg)")
+ax.set_title("Actual vs. Predicted Waste")
+ax.legend()
+ax.grid(True)
+st.pyplot(fig)
