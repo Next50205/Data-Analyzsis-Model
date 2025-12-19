@@ -1,5 +1,13 @@
 import streamlit as st
 import pandas as pd
+
+st.set_page_config(
+    page_title= "Data Analyzsis Model",
+    page_icon= ":crown:",
+    layout="centered"
+)
+
+st.title("Welcome to my Data Analyzsis", text_alignment='center')
 df = pd.read_csv('sustainable_waste_management_dataset_2024.csv')
 
 st.dataframe(df)
