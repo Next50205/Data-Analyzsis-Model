@@ -10,17 +10,18 @@ st.set_page_config(
 st.title("This is Sustainable Waste Management Dataset 2024", text_alignment='center')
 df = pd.read_csv('sustainable_waste_management_dataset_2024.csv')
 
-st.dataframe(df)
+if st.toggle("Open the Dataframe"): 
+    st.dataframe(df)
+
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error,r2_score
 import numpy as np
 import matplotlib.pyplot as plt
-from numpy.random import default_rng as rng
-
+from numpy.random import default_rng as rng    
 CSV_FILE = "sustainable_waste_management_dataset_2024.csv"
 df = pd.read_csv(CSV_FILE)
-df.head()
+df.head()    
 
 selected_features = ['recyclable_kg', 'collection_capacity_kg', 'temp_c', 'rain_mm']
 X = df[selected_features]
@@ -52,4 +53,6 @@ ax.set_title("Actual vs. Predicted Waste")
 ax.legend()
 ax.grid(True)
 st.pyplot(fig)
+
+
 
