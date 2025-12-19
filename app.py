@@ -7,7 +7,7 @@ st.set_page_config(
     layout="centered"
 )
 
-st.title("Welcome to my Data Analyzsis", text_alignment='center')
+st.title("This is Sustainable Waste Management Dataset 2024", text_alignment='center')
 df = pd.read_csv('sustainable_waste_management_dataset_2024.csv')
 
 st.dataframe(df)
@@ -52,3 +52,4 @@ ax.set_title("Actual vs. Predicted Waste")
 ax.legend()
 ax.grid(True)
 st.pyplot(fig)
+
